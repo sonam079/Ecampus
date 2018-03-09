@@ -1,0 +1,32 @@
+{% extends 'qa/base.html' %}
+{% load staticfiles %}
+
+{% block matter %}
+<div class="an">
+  {% if message %}
+    <strong>Enter a valid Answer!</strong>
+  {% endif %}
+
+  <form method="post" action="">
+       {% csrf_token %}
+      {% for field in form  %}
+         {{ field.errors }}
+        <b>{{ field.label_tag }}</b> - {{ field }}
+
+    <br>
+    <br>
+    {% endfor %}
+      <input class="btn  btn-success" type="submit" value="Submit Comment" />
+  </form>
+
+</div>
+<style >
+.an{
+  padding-bottom: 10%;
+  padding-left: 5%;
+}
+
+
+</style>
+
+{% endblock matter %}

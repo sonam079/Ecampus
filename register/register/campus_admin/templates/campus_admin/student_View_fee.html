@@ -1,0 +1,44 @@
+
+{% extends 'campus_admin/base.html' %}
+
+{% block body %}
+
+    <style>
+        .baseStyle{
+                margin-top: 20px;
+                margin-left: 120px;
+                margin-right: 120px;
+        }
+        #outerPanel{
+            margin-top: 30px;
+            margin-left: 500px;
+            margin-right: 500px;
+            padding-bottom: 50px;
+        }
+         .padd{
+            margin-left: 30px;
+        }
+    </style>
+
+        <div class="panel panel-default" id="outerPanel">
+            <div class="panel-body">
+                <div class="baseStyle">
+
+                     {% for i in student %}
+                    <li class="list-group-item">
+                         <div class="padd">
+                            <a href="{% url 'campus_admin:sem_view_fee' pk4=pk4 pk=i.student_id pk1=i.batch %}" s>{{ i.student_id }}</a> <br>
+
+                        </div>
+                       </li>
+                {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,40 @@
+{% extends 'campus_admin/base.html' %}
+
+{% block body %}
+    <style>
+            #outerPanel {
+                margin-top: 30px;
+                margin-left: 500px;
+                margin-right: 500px;
+                padding-bottom: 30px;
+            }
+            #submitButton{
+                margin-left: 150px;
+            }
+
+    </style>
+
+    <div class="panel panel-default" id="outerPanel">
+        <div class="panel-body">
+
+                 <form method="POST" class="post-form" id="form">{% csrf_token %}
+                        {% for field, error in form.errors.items %}
+                             {% if field != '__all__' %}{% endif %}
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    {{ error | striptags }} <br>
+                        {% endfor %}
+
+                     <p> <strong> First Name </strong> {{ form.first_name }}</p>
+                     <p> <strong> Last Name </strong> {{ form.last_name }}</p>
+                     <p> <strong> Username </strong> {{ form.username }}</p>
+                     <p> <strong> Email </strong> {{ form.email }}</p>
+                     <p> <strong> Password </strong> {{ form.password }}</p>
+
+
+                        <button type="submit" class="save btn btn-primary" id="submitButton"> Save </button>
+                </form>
+
+
+        </div>
+    </div>
+{% endblock %}

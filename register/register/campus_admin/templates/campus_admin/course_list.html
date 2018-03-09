@@ -1,0 +1,48 @@
+
+
+
+
+{% extends 'campus_admin/base.html' %}
+
+
+{% block body %}
+    <style>
+        .baseStyle{
+                margin-top: 20px;
+                margin-left: 120px;
+                margin-right: 120px;
+        }
+        #outerPanel{
+            margin-top: 30px;
+            margin-left: 500px;
+            margin-right: 500px;
+            padding-bottom: 50px;
+        }
+        .padd{
+            margin-left: 30px;
+        }
+    </style>
+
+        <div class="panel panel-default" id="outerPanel">
+            <div class="panel-body">
+                <div class="baseStyle">
+                    {% for c in students %}
+                    <li class="list-group-item">
+                            <div class="padd">
+                                <a href="{% url 'campus_admin:result_add' pk4=pk4 pk=c.studentId.student_id pk1=pk1 pk2=pk2 pk3=c.courseNo.courseNo %}"> {{ c.courseNo.courseNo }}</a> <br>
+                            </div>
+                    </li>
+
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+
+
+
+
+

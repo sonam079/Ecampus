@@ -1,0 +1,23 @@
+{% extends 'campus_admin/base.html' %}
+
+
+{% block body %}
+     <style>
+        .homeStyle{
+
+	            margin-top: 100px;
+                margin-left: 470px;
+        }
+
+    </style>
+
+    <div class="homeStyle">
+             <a href="{% url 'campus_admin:fee_receipt' %}" class="btn btn-info" role="button"> Fee Receipt</a> &nbsp;
+             <a href="{% url 'campus_admin:result' %}" class="btn btn-info" role="button"> Result</a> &nbsp;
+             <a href="{% url 'campus_admin:add_faculty' %}" class="btn btn-info" role="button"> Add Faculty</a> &nbsp;
+             <a href="{% url 'campus_admin:add_course' %}" class="btn btn-info" role="button"> Add Courses</a> &nbsp;
+    </div>
+
+
+
+{% endblock %}

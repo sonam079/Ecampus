@@ -1,0 +1,56 @@
+
+
+
+{% extends 'student_view.html' %}
+{% load staticfiles %}
+{% load mathfilters %}
+{% block extend %}
+
+    <style>
+        .temp{
+            margin-top: 50px;
+            padding:100px;
+
+        }
+        th{
+            border-top:2px solid black;
+            border-bottom: 2px solid black;
+            color: #447e9b;
+        }
+        td{
+             border-bottom: 2px solid black;
+        }
+    </style>
+
+    <h1 style="margin-left: 600px;"> <strong> Fee Details </strong>  </h1>
+
+<table border="1" align="center" colspan="2" width="80%" class="temp">
+   <tr>
+         <th width="40%" style="text-align:center;"> <strong> SemesterNo </strong> </th>
+         <th width="30%" style="text-align:center;"> <strong>  Receipt No </strong> </th>
+         <th width="30%" style="text-align:center;"> <strong> Status </strong> </th>
+
+   </tr>
+
+   <tr>
+        <td width="40%" align="center">{{ pk2 }}</td>
+        <td width="30%" align="center"> {{ fee.receiptId }} </td>
+        <td width="30%" align="center"> {{ fee.status }}</td>
+
+
+   </tr>
+
+</table>
+
+{% endblock extend%}
+
+{% comment %}
+ {% with ''|center:iterate as range %}
+    {% for _ in  range  %}
+       {% with pk2|sub:forloop.counter as pk2 %}
+           <a href="{% url 'campus_admin:result_view' pk=pk pk1=pk1 pk2=pk2 pk4=pk4 %}"> Semester {{ pk2 }} Grade Card</a> <br>
+       {% endwith %}
+    {% endfor %}
+    {% endwith %}
+{% endcomment %}
+

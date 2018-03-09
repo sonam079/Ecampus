@@ -1,0 +1,63 @@
+{% extends 'faculty_home_page.html' %}
+
+{% block extend %}
+
+
+
+
+<style>
+    .content{
+        margin-top:2%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    h1{
+        margin-left:35%;
+    }
+</style>
+
+ <h1>View Assignment Material </h1>
+
+
+            <!-- Contents starts here -->
+    <div class="content">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+
+		<table class="table table-hover">
+            <tbody style="text-align: left">
+            <div class="panel-heading">
+                <tr>
+                <th width="20%">File Name</td>
+                 <th width="40%">Description</td>
+                 <th width="20%">Download</td>
+                 <th width="20%">Submissions</td>
+
+                </tr>
+
+        </div>
+
+<tr>
+
+
+
+    {% for file in assignment_material %}
+    <tr>
+     <td width="20%" >{{ file.filename }}</td>
+     <td width="40%">{{ file.description }}</td>
+     <td width="20%" ><a class="btn " href="/download/assignment-material/{{file.filename}}" >Download here</a></td>
+     <td width="20%"><a class="btn " href="{% url 'course:student_assignment_submission_view' course_no=course_no assignment_id=file.id %}" >Assignment Submissions</a></td>
+    </tr>
+ {% endfor %}
+
+  </tr>
+
+            </tbody >
+</table>
+        </div>
+      </div>
+
+ </div>
+{% endblock extend%}

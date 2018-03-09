@@ -1,0 +1,48 @@
+{% extends 'faculty_home_page.html' %}
+{% load staticfiles %}
+{% block extend %}
+
+<style>
+    .content{
+        margin-top:5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+</style>
+<body>
+    <div class="content">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+
+		<table class="table table-hover">
+            <tbody style="text-align: left">
+            <div class="panel-heading">
+                <tr>
+                    <tr>
+                     <th width="20%">Student ID</td>
+                     <th width="20%">Student Name</td>
+                     <th width="30%">Submission Time</td>
+                     <th width="30%">Download</td>
+                    </tr>
+                </tr>
+            </div>
+            {% for assignment in assignment_list %}
+                 <td width="20%">{{ assignment.student.email|slice:"9" }}</td>
+                 <td width="20%">{{ assignment.student.username }}</td>
+                 <td width="30%">{{ assignment.uploaded_at }}</td>
+                 <td width="30%"><a href="/download/{{ assignment.file }}" class="btn " style="background-color:#0f6c6b "><font color=#FFFFFF>Download here</font></a></td>
+            {% endfor %}
+  </tr>
+
+            </tbody >
+</table>
+        </div>
+      </div>
+
+ </div>
+
+
+</body>
+{% endblock extend %}

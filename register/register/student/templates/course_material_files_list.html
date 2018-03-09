@@ -1,0 +1,64 @@
+{% extends 'student_course_detail_view.html' %}
+{% load staticfiles %}
+
+{% block bar %}
+{{courses.course_name}}
+{% endblock bar %}
+{% block student_content %}
+
+<style>
+    .content{
+        margin-top:5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+</style>
+
+ <!--{% for file in assignment_material %}-->
+    <!--<tr>-->
+     <!--<td width="20%">{{ file.filename }}</td>-->
+     <!--<td width="20%">{{ file.description }}</td>-->
+     <!--<td width="20%" align="center"><a href="/download/assignment-material/{{file.filename}}" style="text-decoration:None">Download here</a></td>-->
+     <!--<td width="20%">{{ file.submission_last_date }}</td>-->
+     <!--<td width="20%" align="center"><form method="post" enctype="multipart/form-data">-->
+        <!--{% csrf_token %}-->
+        <!--{{ form.as_p }}-->
+        <!--<button type="submit" name="file.id" value="{{ file.id }}">Upload</button>-->
+        <!--</form>-->
+     <!--</td>-->
+    <!--</tr>-->
+ <!--{% endfor %}-->
+
+<body>
+            <!-- Contents starts here -->
+    <div class="content">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+
+		<table class="table table-hover">
+            <tbody style="text-align: left">
+                <div class="panel-heading">
+                    <tr>
+                    <th>Filename</th>
+                    <th>Description</th>
+                    <th>Download</th>
+                    </tr>
+                </div>
+            </tbody >
+            {% for file in course_material %}
+                <tr>
+                <td>{{ file.filename }}</td>
+                <td>{{ file.description }}</td>
+                <td><a class="btn" href="/download/course-material/{{file.filename}}" style="background-color:#0f6c6b " ><font color=#FFFFFF>Download</font></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+{% endblock student_content %}

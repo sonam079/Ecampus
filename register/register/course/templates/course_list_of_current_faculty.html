@@ -1,0 +1,207 @@
+{% extends 'faculty_home_page.html' %}
+
+{% block extend %}
+{% if user.is_authenticated %}
+   <style type="text/css">
+
+
+
+  span
+{
+    line-height: normal;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.rectangles{
+padding-top:20px;
+padding-bottom:10px;
+}
+.rectangles .rectangle1 {
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-right: 5px;
+    width: 290px;
+    height: 100px;
+    border: 2px solid #a3a948;
+    background-color: #0f6c6b;
+    padding: 18px 5px 5px 5px;
+    position: relative;
+	line-height: normal;
+    display:inline-block;
+    vertical-align: middle;
+
+
+}
+.rectangles .rectangle {
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-right: 5px;
+    width: 290px;
+    height: 100px;
+    border: 2px solid #0f6c6b;
+    background-color: #2aafb4;
+    padding: 18px 5px 5px 5px;
+    position: relative;
+	line-height: normal;
+    display:inline-block;
+    vertical-align: middle;
+
+
+}
+.rectangles .rectangle .circle {
+  background: #0f6c6b;
+  border-radius: 100%;
+     border: 2px solid #a3a948;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+    text-align:center;
+	line-height:50px;
+}
+    .cfo{
+        padding-left:40px;
+        padding-top:20px;
+        color:white;
+    }
+	.cfo1{
+        padding-left:35px;
+        padding-top:20px;
+       padding-right:35px;
+    }
+</style>
+<style type="text/css">
+.flex-container1{
+	width: 100%;
+	min-height: 500px;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */
+	display: flex; /* Standard syntax */
+}
+.flex-container1 .column{
+	padding: 10px;
+	background: #f7f7f7;
+	-webkit-flex: 1; /* Safari */
+	-ms-flex: 1; /* IE 10 */
+	flex: 1; /* Standard syntax */
+}
+.flex-container1 .column.bg-alt{
+	background: #b4bac0;
+}
+</style>
+<style>
+
+
+.wrap {
+	padding-top:10px;
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
+main1 {
+  -webkit-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  padding-bottom:20px;
+  padding-top:20px;
+}
+@media (max-width:   800px) {
+  main1 {
+    -webkit-box-orient: vertical;
+    -o-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+aside,
+article {
+  overflow-y: scroll;
+  padding: 2em;
+}
+aside {
+  -webkit-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #FFFFFF;
+}
+article {
+  -webkit-box-flex: 2;
+  -o-box-flex: 2;
+  box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+ background: #FFFFFF;
+}
+h1 {
+  margin-top: 0;
+}
+
+    .contain{
+        margin-left: 30%;
+         margin-right: 30%;
+    }
+        </style>
+
+{% block matter%}
+<div class="contain">
+
+     <div class="contents-wrapper">
+            <!-- Contents starts here -->
+    <div class="content">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+
+ <div class="flex-container">
+        <div class="column">
+         <div class="container">
+             <div class="row">
+			 <div class="col-sm-4 col-md-4 col-lg-4" style="  background-color: #FFFFFF; margin-left:60px; margin-top:30px">
+        <div class="rectangles">
+
+
+            {% for course in courses_of_current_faculty %}
+            <div class="rectangle">
+                         <div class="circle">
+						   <span style="color:white">CS<br> 301</span>
+						 </div>
+                                <p class="cfo" style="font-size:15px" ><a width="30%" align="center" href="{% url 'course:course_detail_view' course_no=course.courseNo %}"><font color="#FFFFFF";font-size="14px">{{ course.courseNo }}</font></a></p>
+					</div><br>
+
+
+
+        {% endfor %}
+
+
+        </div>
+             </div>
+             </div>
+         </div>
+      </div>
+</div>
+
+
+	         </div>
+         </div>
+      </div>
+</div>
+
+</div>
+ {% endblock matter%}
+{% endif %}
+{% endblock extend %}

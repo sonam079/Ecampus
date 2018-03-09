@@ -1,0 +1,120 @@
+{% extends 'student_view.html' %}
+
+{% load static %}
+{% block extend %}
+<style>
+.wraper {
+  position: absolute;
+  top: 30%;
+  left: 48%;
+  margin: 0 auto -100px; /*Allow for footer height*/
+  height: auto !important; /*Cause footer to stick to bottom in IE 6*/
+  margin-left: -25% ;
+  text-align: center;
+}
+.wrap {
+  min-height: 100px;
+  height: auto;
+  height: ;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
+.sidenav {
+    min-height: 92%;
+    height: auto;
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    top: 168px;
+    left: 0;
+    background-color: #00000;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0f6c6b;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #a3a948;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+.cont{
+
+    text-align: center;
+}
+</style>
+
+<body class="wrap">
+        <main1>
+            <aside >
+                  <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                    <a href="{% url 'student:course_material_files_list' course_no=course_no %}">Course Material</a>
+                    <a href="{% url 'student:student_assignment_files_list' course_no=course_no %}">Assignments</a>
+                    <a href="{% url 'qa:qa_index' course_no=course_no %}">Discusion Forum</a>
+                  </div>
+
+                  <div id="main" >
+                    <div class="mainblock">
+
+
+                      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
+
+                        {% block bar %}
+                          {{course.courseNo.courseName}}
+                        {% endblock bar %}
+                      </span>
+
+                      {% block student_content %}
+                            <div class="cont">
+                          <h1>Dear {{ user.username }}, Welcome to course {{ course_no }}</h1>
+                                <hr>
+                            <h3>This is place where you can learn beyond your boundaries.</h3>
+                            <hr>
+                           </div>
+                      {% endblock student_content %}
+
+                    </div>
+                  </div>
+                </div>
+            </aside>
+        </main1>
+
+</body>
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+{% endblock %}

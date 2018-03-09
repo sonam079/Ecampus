@@ -1,0 +1,98 @@
+{% extends 'qaforum/base.html' %}
+{% load staticfiles %}
+
+{% block matter %}
+<div class="con">
+
+
+<div class="jumbotron">
+  <div class="row">
+
+    <div class="col-sm-10">
+      <small class="pull-right">Posted by {{ question.user.username }}, {{ question.pub_date }}</small>
+      {% if user.is_authenticated and question.user == user %}<a href="{% url 'qaforum:qaforum_update_question' question.id %}"><small class="pull-right">Edit &nbsp;</small></a>{% endif %}
+       <h3><cool>Q: </cool>{{ question.title }}</h3>
+      <h5>Description:&nbsp;{{ question.description }}</h5>
+      <br>
+      <p>
+      {% if question.closed %}
+          <p class="pull-right">This Question has been closed.</p>
+      {% else %}
+          <a class="btn  pull-right" style="background-color:#0f6c6b " href="{% url 'qaforum:qaforum_create_answer' question.id %}" role="button"><font color=#FFFFFF>Answer this Question!</font></a><hr>
+          <a class="btn  pull-right" style="background-color:#0f6c6b " href="{% url 'qaforum:qaforum_create_question_comment' question.id %}" role="button"><font color=#FFFFFF>comment this Question!</font></a>
+      {% endif %}
+      </p>
+    </div>
+  </div>
+</div>
+{% if last_comments %}
+  <h4>comments</h4>
+  {% for comment in last_comments %}
+  <div class="row">
+    <div class="col-md-9 col-md-offset-1">
+    <p><b>{{ comment.comment_text }}</b><small>, <a href="{% url 'student:view_profile_with_pk' comment.user.id %}">{{ comment.user.username }}</a> <div class="pull-right">{{ comment.pub_date }}</div></small></p>{% if comment.user == user %}<a href="{% url 'qaforum:qaforum_update_question_comment' comment.id %}" class="pull-right"><small>Edit &nbsp;</small></a>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+{% endif %}
+{% if answers %}
+  <h3>Answers</h3>
+  <hr/>
+
+    {% for answer in answers %}
+    <div class="row">
+
+      <div class ="col-md-9">
+        <a href="{% url 'qaforum:qaforum_create_answer_comment' answer.id %}" class="pull-right"><small><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comment &nbsp;</small></a>
+        {% if answer.user == user %}<a href="{% url 'qaforum:qaforum_update_answer' answer.id %}" class="pull-right"><small>Edit &nbsp;</small></a>{% endif %}
+            <div id="ans" class="alert alert-primary" role="alert">{{ answer.answer_text }}</div>
+        {% if answer.qaanswercomment_set %}
+          {% for comment in answer.qaanswercomment_set.all %}
+            <p><b>{{ comment.comment_text }}</b><small>, <a href="{% url 'student:view_profile_with_pk' comment.user.id %}">{{ comment.user.username }}</a> <div class="pull-right">{{ comment.pub_date }}</div></small></p>{% if comment.user == user %}<a href="{% url 'qaforum:qaforum_update_answer_comment' comment.id %}" class="pull-right"><small>Edit &nbsp;</small></a>{% endif %}
+          <hr>
+          {% endfor %}
+        {% endif %}
+      </div>
+          <div class ="col-md-2">
+            {% if answer.user.userqaprofile.picture %}
+                <img class="pull-right" src="{{ answer.user.userqaprofile.picture }}">
+            {% else %}
+                <img class="pull-right" width="50px" height="50px" src="{% static "qa/user.png" %}">
+            {% endif %}
+              <p class="pull-right">- <b><a href="{% url 'student:view_profile_with_pk' answer.user.id %}">{{ answer.user.username }}</a></b></p>
+
+          </div>
+    </div>
+  <hr>
+    {% endfor %}
+
+{% else %}
+<center><h2>This question is still not answerd,<a href="{% url 'qaforum:qaforum_create_answer' question.id %}" role="button">Write answer!</a></h2></center>
+{% endif %}
+
+</div>
+<style >
+.con{
+  padding-bottom: 10%;
+}
+
+div {
+
+    word-wrap: break-word
+}
+p{
+  font-family: "Lucida Sans Unicode","Lucida Grande",sans-serif;
+  font-size: 1.2rem;
+  text-align: left;
+}
+</style>
+
+{% endblock matter %}
+{% block extra_js %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+{% endblock extra_js %}
