@@ -1,0 +1,48 @@
+
+
+
+
+
+{% extends 'campus_admin/base.html' %}
+
+
+{% block body %}
+    <style>
+        .baseStyle{
+                margin-top: 20px;
+                margin-left: 190px;
+                margin-right: 120px;
+        }
+        #outerPanel{
+            margin-top: 30px;
+            margin-left: 500px;
+            margin-right: 500px;
+            padding-bottom: 50px;
+        }
+        .padd{
+            margin-left: 30px;
+        }
+        .temp{
+            margin-left: -50px;
+        }
+    </style>
+
+        <div class="panel panel-default" id="outerPanel">
+            <div class="panel-body">
+                <div class="baseStyle">
+                   	<p class="temp"> <strong> Successfully done </strong> </p>
+                    <a href="{% url 'campus_admin:index' %}" class="done"> Return to Home </a> <br>
+                    <a href="{% url 'campus_admin:result_base' pk4=pk4 pk=pk1 %}" class="done" > Return to Student Page</a> <br>
+                    <a href="{% url 'campus_admin:result' %}" class="done" > Return to Batch</a>
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+
+
+
+
+

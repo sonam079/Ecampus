@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <nav>
+    <div class="navbar navbar-inverse navbar-custom" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li> <a href="/student/" >Home </a></li>
+			<li> <a href="{% url 'campus_admin:final_fee_receipt_view' pk4=stud.program  pk1=stud.batch pk=stud.student_id %}" >Fee Details</a> </li>
+			<li> <a href="{% url 'campus_admin:final_result_view' pk4=stud.program  pk1=stud.batch pk=stud.student_id %}" >Results </a> </li>
+			<li> <a href="{% url 'student:view_classmates' %}">Classmates </a> </li>
+			<li> <a href="{% url 'student:view_profile' %}" >Profile </a> </li>
+      <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+              <ul class="dropdown-menu multi-level">
+                <li><a href="{% url 'student:edit_profile' %}">Edit Profile</a></li>
+                <li><a href="{% url 'auth_password_change' %}">Reset Password</a></li>
+                <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+<style type="text/css">
+
+
+
+  span
+{
+    line-height: normal;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.rectangles{
+padding-top:20px;
+padding-bottom:10px;
+}
+.rectangles .rectangle1 {
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-right: 5px;
+    width: 290px;
+    height: 100px;
+    border: 2px solid #a3a948;
+    background-color: #0f6c6b;
+    padding: 18px 5px 5px 5px;
+    position: relative;
+	line-height: normal;
+    display:inline-block;
+    vertical-align: middle;
+
+
+}
+.rectangles .rectangle {
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-right: 5px;
+    width: 290px;
+    height: 100px;
+    border: 2px solid #0f6c6b;
+    background-color: #2aafb4;
+    padding: 18px 5px 5px 5px;
+    position: relative;
+	line-height: normal;
+    display:inline-block;
+    vertical-align: middle;
+
+
+}
+.rectangles .rectangle .circle {
+  background: #0f6c6b;
+  border-radius: 100%;
+     border: 2px solid #a3a948;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+    text-align:center;
+	line-height:50px;
+}
+    .cfo{
+        padding-left:40px;
+        padding-top:20px;
+        color:white;
+    }
+	.cfo1{
+        padding-left:35px;
+        padding-top:20px;
+       padding-right:35px;
+    }
+</style>
+<style type="text/css">
+.flex-container1{
+	width: 100%;
+	min-height: 500px;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */
+	display: flex; /* Standard syntax */
+}
+.flex-container1 .column{
+	padding: 10px;
+	background: #f7f7f7;
+	-webkit-flex: 1; /* Safari */
+	-ms-flex: 1; /* IE 10 */
+	flex: 1; /* Standard syntax */
+}
+.flex-container1 .column.bg-alt{
+	background: #b4bac0;
+}
+</style>
+<style>
+
+
+.wrap {
+	padding-top:10px;
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
+main1 {
+  -webkit-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  padding-bottom:20px;
+  padding-top:20px;
+}
+@media (max-width:   800px) {
+  main1 {
+    -webkit-box-orient: vertical;
+    -o-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+aside,
+article {
+  overflow-y: scroll;
+  padding: 2em;
+}
+aside {
+  -webkit-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #FFFFFF;
+}
+article {
+  -webkit-box-flex: 2;
+  -o-box-flex: 2;
+  box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+ background: #F5F5F5;
+}
+h1 {
+  margin-top: 0;
+}
+        </style>
+
+
+<!--<div class="flex-container1">-->
+        <!--<div class="column">-->
+                <!--<div class="wrap">-->
+                    <!--<main1>-->
+                        <!--<aside >-->
+                            <!--<div class="wraper">-->
+                                <!--{% for course in student_courses %}-->
+                                    <!--<a href="{% url 'student:student_course_detail_view' course_no=course  %}" class="button button&#45;&#45;ghost button&#45;&#45;ghost&#45;&#45;green">{{ course }}</a>-->
+                                <!--{% endfor %}-->
+                                    <!--<a href="/forum" class="button button&#45;&#45;ghost button&#45;&#45;ghost&#45;&#45;green">Forum</a>-->
+                            <!--</div>-->
+                        <!--</aside>-->
+                    <!--</main1>-->
+                <!--</div>-->
+		<!--</div>-->
+        <!--<div class="column bg-alt">-->
+		<!--<div class="wrap">-->
+            <!--<main1>-->
+                <!--<article>-->
+                    <!--<h1 style="text-align:center;text-color:#ff0000">Announcements</h1>-->
+                    <!--{% for announcement in announcement_in_courses %}-->
+                        <!--<p>{{ forloop.counter }}. {{ announcement.announcement }} - {{ announcement.announcementUser }}, {{ announcement.uploaded_at }}</p>-->
+                    <!--{% endfor %}-->
+                <!--</article>-->
+            <!--</main1>-->
+        <!--</div>-->
+		<!--</div>-->
+<!--</div>-->
+<div class="conta">
+ <div class="flex-container">
+        <div class="column">
+         <div class="container">
+             <div class="row">
+			 <div class="col-sm-4 col-md-4 col-lg-4" style="   margin-top:30px">
+        <div class="rectangles">
+
+                 {% for course in student_courses %}
+                    <div class="rectangle">
+                         <div class="circle">
+						   <span style="color:white">{{ course }}</span>
+						 </div>
+                                <p class="cfo" style="font-size:15px" ><a href="{% url 'student:student_course_detail_view' course_no=course  %}"><font color="#FFFFFF";font-size="14px"> {{ course.course_name }}</font></a></p>
+					</div><br>
+
+                {% endfor %}
+
+
+
+                    <div class="rectangle">
+
+                                <p  style="font-size:20px;padding-top: 10px" ><a href="/forum"><font color="#FFFFFF";font-size="14px">Discussion Forum</font></a></p>
+                   </div><br>
+
+    </div>
+             </div>
+
+	<div class="col-sm-8 col-md-8 col-log-8" style="background-color:#0f6c6b;margin-top:50px;margin-bottom:10px">
+	<h1 style="color:white">Announcements</h1>
+        <div class="wrap">
+            <main1>
+                <article>
+                        {% for announcement in announcement_in_courses %}
+                            <li>{{ announcement.announcement }} - {{ announcement.announcementUser }}, {{ announcement.uploaded_at }}</li>
+                        {% endfor %}
+                </article>
+            </main1>
+        </div>
+           </div    >
+	         </div>
+         </div>
+      </div>
+</div>
+    </div>
+{% comment %}
+{% if user.is_authenticated %}
+    <p><strong>Dear {{ user.username }} student, glad to have you here!</strong></p>
+    <p>This is IIITV Ecampus</p>
+    <p><a align="center" href="{% url 'student:student_course_list' %}">Courses</a></p>
+    <p><a href="{% url 'qaforum:qaforum_index' %}">Forum</a></p>
+{% endif %}
+{% endcomment %}
+{% endblock %}

@@ -1,0 +1,1 @@
+@"C:\Users\DELL-PC\AppData\Local\Programs\Python\Python35\python.exe" "C:\Users\DELL-PC\AppData\Local\Programs\Python\Python35\Scripts\markdown_py" %*

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<style>
+    .cont{
+        margin-top: 10%;
+        margin-left: 40%;
+
+    }
+
+
+
+</style>
+<div class="cont">
+<p><h3>{% trans "Successfully Logged out" %}</h3></p><br>
+<p><h4><a style="margin-left: 90px" href="{% url 'index' %}">Log In</a></h4></p>
+</div>
+{% endblock %}

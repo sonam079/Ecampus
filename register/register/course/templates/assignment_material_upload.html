@@ -1,0 +1,59 @@
+{% extends 'course_list_of_current_faculty.html' %}
+
+{% block matter %}
+
+<style>
+
+  h1{
+    margin-top: 2%;
+    margin-left: 32%;
+  }
+</style>
+<h1> Upload Assignment Material</h1>
+<div class="contain">
+
+     <div class="contents-wrapper">
+            <!-- Contents starts here -->
+    <div class="content">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+
+
+
+               <!--<form method="post" enctype="multipart/form-data">-->
+    <!--{% csrf_token %}-->
+    <!--{{ form.as_p }}-->
+    <!--<button type="submit">Upload</button>-->
+  <!--</form>-->
+
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="panel-body">
+			Description &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			:&nbsp;<input type="text" name="description" id="form.description"><br><br>
+
+			File &nbsp; &nbsp; &nbsp;  &nbsp;
+			:&nbsp;<input type="file" name="file" id="form.file"><br><br>
+
+			Submission Date &nbsp;
+			:&nbsp;<input type="date" name="submission_last_date" id="form.submission_last_date"><br><br><br>
+
+			<button  style="margin-left:40% " type="submit" name="button">submit</button>
+
+        </div>
+		</form>
+
+
+	         </div>
+         </div>
+      </div>
+</div>
+
+</div>
+
+
+{% endblock matter%}

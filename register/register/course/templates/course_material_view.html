@@ -1,0 +1,96 @@
+{% extends 'faculty_home_page.html' %}
+
+{% block extend %}
+
+<!--<body>-->
+    <!--<div class="flex-container1">-->
+        <!--<div class="column">-->
+		<!--<div class="wrap">-->
+		<!--<article>-->
+		<!--<table>-->
+  <!--<tr>-->
+    <!--<th>Filename</th>-->
+    <!--<th>Description</th>-->
+    <!--<th>Download</th>-->
+
+  <!--</tr>-->
+      <!--{% for material in course_material %}-->
+       <!--<tr>-->
+            <!--<td>{{ material.filename }}</td>-->
+            <!--<td>{{ material.description }}</td>-->
+            <!--<td><a class="button" href="/download/course-material/{{material.filename}}" style="...">Download</a></td>-->
+       <!--</tr>-->
+      <!--{% endfor %}-->
+
+<!--</table>-->
+<!--</article>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
+    <!--</div>-->
+<!--</body>-->
+<!--<script type="text/javascript" src="js/jquery.paginate.min.js "></script>-->
+<!--<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
+<!--<script src="https://use.fontawesome.com/434d359724.js"></script>-->
+<!--<script src="http://iiitvadodara.ac.in/js/main.js"></script>-->
+
+
+
+
+<style>
+    .content{
+        margin-top:2%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    h1{
+        margin-left:35%;
+    }
+</style>
+
+ <h1>View Course Material </h1>
+
+
+            <!-- Contents starts here -->
+    <div class="content">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+
+		<table class="table table-hover">
+            <tbody style="text-align: left">
+            <div class="panel-heading">
+<tr>
+                <th>Filename</th>
+                <th>Description</th>
+                <th>Download</th>
+
+                </tr>
+
+        </div>
+
+<tr>
+
+    {% for material in course_material %}
+       <tr>
+            <td>{{ material.filename }}</td>
+            <td>{{ material.description }}</td>
+            <td><a class="btn" href="/download/course-material/{{material.filename}}" style="background-color:#0f6c6b " ><font color=#FFFFFF>Download</font></a></td>
+       </tr>
+      {% endfor %}
+
+  </tr>
+
+            </tbody >
+</table>
+        </div>
+      </div>
+
+ </div>
+
+{% endblock extend %}

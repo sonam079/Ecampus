@@ -1,0 +1,48 @@
+
+
+{% extends 'campus_admin/base.html' %}
+
+
+{% block body %}
+    <style>
+        .baseStyle{
+                margin-top: 20px;
+                margin-left: 120px;
+                margin-right: 120px;
+        }
+        #outerPanel{
+            margin-top: 30px;
+            margin-left: 500px;
+            margin-right: 500px;
+            padding-bottom: 50px;
+        }
+        .padd{
+            margin-left: 30px;
+        }
+    </style>
+
+        <div class="panel panel-default" id="outerPanel">
+            <div class="panel-body">
+                <div class="baseStyle">
+                   <form method="POST" class="post-form" id="form">{% csrf_token %}
+                        {% for field, error in form.errors.items %}
+                             {% if field != '__all__' %}{% endif %}
+                                    {{ error | striptags }}
+                        {% endfor %}
+
+                     <p> <strong> Grade: </strong> {{ form.grade }}</p>
+
+                        <button type="submit" style="margin-left: 50px" class="save btn btn-primary" id="submitButton"> Save </button>
+                </form>
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+
+
+
+
+
